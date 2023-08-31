@@ -1,7 +1,8 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-
+//import dotenv from "dotenv";
 import "./style.css"
+//dotenv.config();
 
 function IndexPopup() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -12,7 +13,11 @@ function IndexPopup() {
 
   useEffect(() => {
     if (data) {
-      const apiKey = "afed51115c09d7"
+     // const apiKey = "afed51115c09d7"
+     //console.log(PLASMO_PUBLIC_IPINFO_TOKEN);
+     const apiKey = process.env.PLASMO_PUBLIC_IPINFO_TOKEN;
+     
+     console.log(apiKey);
       axios
         .get(`http://ipinfo.io/${data}/json?token=${apiKey}`)
         .then((res) => {
